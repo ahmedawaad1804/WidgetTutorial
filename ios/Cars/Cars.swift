@@ -9,60 +9,86 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-struct Provider: IntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
-    }
-
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
-        completion(entry)
-    }
-
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
-    }
+struct WidgetData: Decodable {
+  let sharedText: String
 }
 
-struct SimpleEntry: TimelineEntry {
+func defaultData() -> WidgetData {
+  return  WidgetData(sharedText: "default data")
+   }
+
+
+struct Provider: IntentTimelineProvider {
+  func placeholder(in context: Context) -> SimpleEntry {
+    SimpleEntry(date: Date(), configuration: ConfigurationIntent(),data: defaultData())
+  }
+  
+  func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+    let entry = SimpleEntry(date: Date(), configuration: configuration,data: defaultData())
+    completion(entry)
+  }
+  
+  func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    var entries: [SimpleEntry] = []
+    let userDefaults = UserDefaults.init(suiteName: "group.cars.shared")
+    if userDefaults != nil {
+      let entryDate = Date()
+      if let savedData = userDefaults!.value(forKey: "myWidgetKey") as? String {
+        let decoder = JSONDecoder()
+        let data = savedData.data(using: .utf8)
+        if let parsedData = try? decoder.decode(WidgetData.self, from: data!) {
+          let nextRefresh = Calendar.current.date(byAdding: .second, value: 5, to: entryDate)!
+          let entry = SimpleEntry(date: nextRefresh, configuration: configuration, data: parsedData)
+          let timeline = Timeline(entries: [entry], policy: .atEnd)
+          completion(timeline)
+        } else {
+          print("Could not parse data")
+        }
+      } else {
+        let nextRefresh = Calendar.current.date(byAdding: .second, value: 5, to: entryDate)!
+        let entry = SimpleEntry(date: nextRefresh, configuration: configuration,data: defaultData())
+        let timeline = Timeline(entries: [entry], policy: .never)
+        
+        
+        completion(timeline)
+        
+      }
+    }
+  }
+}
+  struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
-}
-
-struct CarsEntryView : View {
+    let data: WidgetData
+  }
+  
+  struct CarsEntryView : View {
     var entry: Provider.Entry
-
+    
     var body: some View {
-        Text(entry.date, style: .time)
+//      Text(entry.data.sharedText
+           Text("Pending")
+//
+//                       .font(.system(size: (16 ))))
     }
-}
-
-struct Cars: Widget {
+  }
+  
+  struct Cars: Widget {
     let kind: String = "Cars"
-
+    
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            CarsEntryView(entry: entry)
-        }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+      IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        CarsEntryView(entry: entry)
+      }
+      .configurationDisplayName("My Widget")
+      .description("This is an example widget.")
     }
-}
-
-struct Cars_Previews: PreviewProvider {
+  }
+  
+  struct Cars_Previews: PreviewProvider {
     static var previews: some View {
-        CarsEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+      CarsEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(),data: defaultData()))
+        .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
-}
+  }
+
