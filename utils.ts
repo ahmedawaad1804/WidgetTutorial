@@ -1,5 +1,6 @@
-import {Platform} from 'react-native';
+import {NativeModules, Platform} from 'react-native';
 import SharedGroupPreferences from 'react-native-shared-group-preferences';
+const {WidgetRefresh} = NativeModules;
 
 const DEFAULT_WIDGET_KEY = 'myWidgetKey'; // you can change it
 const DEFAULT_WIDGET_GROUP_ID = 'group.cars.shared'; // you can change it
@@ -14,6 +15,7 @@ const setSharedData = async (
   }
   try {
     await SharedGroupPreferences.setItem(key, payload, groupId);
+    refreshWidgetHandler();
   } catch (error) {
     throw Error(error as any);
   }
@@ -33,4 +35,11 @@ const getSharedData = async (
   }
 };
 
-export {setSharedData, getSharedData};
+const refreshWidgetHandler = () => {
+  if (Platform.OS !== 'ios') {
+    return;
+  }
+  WidgetRefresh.refreshWidget();
+};
+
+export {setSharedData, getSharedData, refreshWidgetHandler};

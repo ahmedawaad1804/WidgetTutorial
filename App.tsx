@@ -6,7 +6,7 @@ import {setSharedData} from './utils';
 const App = () => {
   const [text, setText] = useState('');
   const widgetData = {
-    text,
+    sharedText: text,
   };
 
   const handleSubmit = async () => {

@@ -66,10 +66,7 @@ struct Provider: IntentTimelineProvider {
     var entry: Provider.Entry
     
     var body: some View {
-//      Text(entry.data.sharedText
-           Text("Pending")
-//
-//                       .font(.system(size: (16 ))))
+      Text(entry.data.sharedText)
     }
   }
   

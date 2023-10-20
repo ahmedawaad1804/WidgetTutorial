@@ -16,6 +16,8 @@
 		0787A0962AE2950600787D92 /* Cars.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0787A0922AE2950400787D92 /* Cars.intentdefinition */; };
 		0787A0972AE2950600787D92 /* Cars.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0787A0922AE2950400787D92 /* Cars.intentdefinition */; };
 		0787A09A2AE2950600787D92 /* CarsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0787A0882AE2950300787D92 /* CarsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0787A0A32AE2F3F800787D92 /* WidgetRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0787A0A22AE2F3F800787D92 /* WidgetRefresh.swift */; };
+		0787A0A52AE2F45600787D92 /* WidgetRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 0787A0A42AE2F45600787D92 /* WidgetRefresh.m */; };
 		0C80B921A6F3F58F76C31292 /* libPods-WidgetTutorial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-WidgetTutorial.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -67,6 +69,11 @@
 		0787A0922AE2950400787D92 /* Cars.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Cars.intentdefinition; sourceTree = "<group>"; };
 		0787A0932AE2950600787D92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0787A0952AE2950600787D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0787A09F2AE2F33200787D92 /* WidgetTutorial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = WidgetTutorial.entitlements; path = WidgetTutorial/WidgetTutorial.entitlements; sourceTree = "<group>"; };
+		0787A0A02AE2F34900787D92 /* CarsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CarsExtension.entitlements; sourceTree = "<group>"; };
+		0787A0A12AE2F3F800787D92 /* WidgetTutorial-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WidgetTutorial-Bridging-Header.h"; sourceTree = "<group>"; };
+		0787A0A22AE2F3F800787D92 /* WidgetRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRefresh.swift; sourceTree = "<group>"; };
+		0787A0A42AE2F45600787D92 /* WidgetRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WidgetRefresh.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* WidgetTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WidgetTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WidgetTutorial/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = WidgetTutorial/AppDelegate.mm; sourceTree = "<group>"; };
@@ -144,12 +151,16 @@
 		13B07FAE1A68108700A75B9A /* WidgetTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				0787A09F2AE2F33200787D92 /* WidgetTutorial.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				0787A0A22AE2F3F800787D92 /* WidgetRefresh.swift */,
+				0787A0A42AE2F45600787D92 /* WidgetRefresh.m */,
+				0787A0A12AE2F3F800787D92 /* WidgetTutorial-Bridging-Header.h */,
 			);
 			name = WidgetTutorial;
 			sourceTree = "<group>";
@@ -176,6 +187,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				0787A0A02AE2F34900787D92 /* CarsExtension.entitlements */,
 				13B07FAE1A68108700A75B9A /* WidgetTutorial */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* WidgetTutorialTests */,
@@ -290,7 +302,7 @@
 						CreatedOnToolsVersion = 14.2;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1420;
 					};
 				};
 			};
@@ -481,6 +493,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0787A0972AE2950600787D92 /* Cars.intentdefinition in Sources */,
+				0787A0A32AE2F3F800787D92 /* WidgetRefresh.swift in Sources */,
+				0787A0A52AE2F45600787D92 /* WidgetRefresh.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -506,6 +520,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-WidgetTutorial-WidgetTutorialTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -533,6 +548,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-WidgetTutorial-WidgetTutorialTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = WidgetTutorialTests/Info.plist;
@@ -564,9 +580,11 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = CarsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -607,10 +625,12 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = CarsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Cars/Info.plist;
@@ -642,7 +662,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = WidgetTutorial/WidgetTutorial.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = WidgetTutorial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -657,6 +679,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = WidgetTutorial;
+				SWIFT_OBJC_BRIDGING_HEADER = "WidgetTutorial-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -670,7 +693,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = WidgetTutorial/WidgetTutorial.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WidgetTutorial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -684,6 +709,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = WidgetTutorial;
+				SWIFT_OBJC_BRIDGING_HEADER = "WidgetTutorial-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -758,10 +784,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -831,10 +854,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
